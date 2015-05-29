@@ -158,7 +158,7 @@ namespace Projekt1 {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pokoj);
 			this->Name = L"NowyPokoj";
-			this->Text = L"NowyPokoj";
+			this->Text = L"Nowy Pokoj";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dorosli))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dzieci))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pietro))->EndInit();

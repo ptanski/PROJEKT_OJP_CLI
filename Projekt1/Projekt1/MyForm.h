@@ -21,6 +21,7 @@ namespace Projekt1 {
 			//
 			//TODO: Add the constructor code here
 			//
+			odswiezPokoje();
 		}
 
 	protected:
@@ -234,21 +235,21 @@ namespace Projekt1 {
 			// wolneToolStripMenuItem
 			// 
 			this->wolneToolStripMenuItem->Name = L"wolneToolStripMenuItem";
-			this->wolneToolStripMenuItem->Size = System::Drawing::Size(175, 24);
+			this->wolneToolStripMenuItem->Size = System::Drawing::Size(154, 24);
 			this->wolneToolStripMenuItem->Text = L"Wolne";
 			this->wolneToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::wolneToolStripMenuItem_Click);
 			// 
 			// piêtraToolStripMenuItem
 			// 
 			this->piêtraToolStripMenuItem->Name = L"piêtraToolStripMenuItem";
-			this->piêtraToolStripMenuItem->Size = System::Drawing::Size(175, 24);
+			this->piêtraToolStripMenuItem->Size = System::Drawing::Size(154, 24);
 			this->piêtraToolStripMenuItem->Text = L"Piêtra";
 			this->piêtraToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::piêtraToolStripMenuItem_Click);
 			// 
 			// iloœæMiejscToolStripMenuItem
 			// 
 			this->iloœæMiejscToolStripMenuItem->Name = L"iloœæMiejscToolStripMenuItem";
-			this->iloœæMiejscToolStripMenuItem->Size = System::Drawing::Size(175, 24);
+			this->iloœæMiejscToolStripMenuItem->Size = System::Drawing::Size(154, 24);
 			this->iloœæMiejscToolStripMenuItem->Text = L"Iloœæ miejsc";
 			this->iloœæMiejscToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::iloœæMiejscToolStripMenuItem_Click);
 			// 
@@ -263,7 +264,7 @@ namespace Projekt1 {
 			this->listaPokoi->Size = System::Drawing::Size(897, 477);
 			this->listaPokoi->TabIndex = 3;
 			this->listaPokoi->UseCompatibleStateImageBehavior = false;
-			this->listaPokoi->View = System::Windows::Forms::View::Details;
+			this->listaPokoi->View = System::Windows::Forms::View::Tile;
 			this->listaPokoi->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listView1_SelectedIndexChanged);
 			this->listaPokoi->DoubleClick += gcnew System::EventHandler(this, &MyForm::listaPokoi_DoubleClick);
 			// 
@@ -318,5 +319,8 @@ namespace Projekt1 {
 	private: System::Void piêtraToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void wolneToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e);
 private: System::Void listaPokoi_DoubleClick(System::Object^  sender, System::EventArgs^  e);
+
+	public: System::Void odswiezPokoje();
 };
+
 }

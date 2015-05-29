@@ -18,6 +18,7 @@ namespace Projekt1 {
 		UsunPokoj(void)
 		{
 			InitializeComponent();
+			odswiezListePokoi();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -38,6 +39,7 @@ namespace Projekt1 {
 	protected:
 	private: System::Windows::Forms::ColumnHeader^  nrPokoju;
 	private: System::Windows::Forms::Button^  usun;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader1;
 
 	private:
 		/// <summary>
@@ -53,19 +55,24 @@ namespace Projekt1 {
 		void InitializeComponent(void)
 		{
 			this->listaPokoi = (gcnew System::Windows::Forms::ListView());
-			this->usun = (gcnew System::Windows::Forms::Button());
 			this->nrPokoju = (gcnew System::Windows::Forms::ColumnHeader());
+			this->usun = (gcnew System::Windows::Forms::Button());
+			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->SuspendLayout();
 			// 
 			// listaPokoi
 			// 
-			this->listaPokoi->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(1) { this->nrPokoju });
+			this->listaPokoi->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(2) { this->nrPokoju, this->columnHeader1 });
 			this->listaPokoi->Location = System::Drawing::Point(13, 13);
 			this->listaPokoi->Name = L"listaPokoi";
 			this->listaPokoi->Size = System::Drawing::Size(394, 200);
 			this->listaPokoi->TabIndex = 0;
 			this->listaPokoi->UseCompatibleStateImageBehavior = false;
 			this->listaPokoi->View = System::Windows::Forms::View::Tile;
+			// 
+			// nrPokoju
+			// 
+			this->nrPokoju->Text = L"Numer pokoju";
 			// 
 			// usun
 			// 
@@ -76,10 +83,6 @@ namespace Projekt1 {
 			this->usun->Text = L"Usun wybrane pokoje";
 			this->usun->UseVisualStyleBackColor = true;
 			this->usun->Click += gcnew System::EventHandler(this, &UsunPokoj::usun_Click);
-			// 
-			// nrPokoju
-			// 
-			this->nrPokoju->Text = L"Numer pokoju";
 			// 
 			// UsunPokoj
 			// 
@@ -95,6 +98,7 @@ namespace Projekt1 {
 		}
 #pragma endregion
 	private: System::Void usun_Click(System::Object^  sender, System::EventArgs^  e);
+private: System::Void odswiezListePokoi();
 
 	};
 }

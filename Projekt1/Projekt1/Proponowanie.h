@@ -18,6 +18,8 @@ namespace Projekt1 {
 		Proponowanie(void)
 		{
 			InitializeComponent();
+
+			odswiezListePokoi();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -50,6 +52,8 @@ namespace Projekt1 {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::ListView^  listaPokoi;
+	private: System::Windows::Forms::ColumnHeader^  numerPokoju;
+	private: System::Windows::Forms::ColumnHeader^  pietro;
 
 
 
@@ -77,6 +81,8 @@ namespace Projekt1 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->listaPokoi = (gcnew System::Windows::Forms::ListView());
+			this->numerPokoju = (gcnew System::Windows::Forms::ColumnHeader());
+			this->pietro = (gcnew System::Windows::Forms::ColumnHeader());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->iloscDoroslych))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->iloscDzieci))->BeginInit();
 			this->SuspendLayout();
@@ -161,12 +167,22 @@ namespace Projekt1 {
 			// 
 			// listaPokoi
 			// 
+			this->listaPokoi->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(2) { this->numerPokoju, this->pietro });
 			this->listaPokoi->Location = System::Drawing::Point(12, 260);
 			this->listaPokoi->Name = L"listaPokoi";
 			this->listaPokoi->Size = System::Drawing::Size(588, 253);
 			this->listaPokoi->TabIndex = 10;
 			this->listaPokoi->UseCompatibleStateImageBehavior = false;
+			this->listaPokoi->View = System::Windows::Forms::View::Tile;
 			this->listaPokoi->SelectedIndexChanged += gcnew System::EventHandler(this, &Proponowanie::listView1_SelectedIndexChanged);
+			// 
+			// numerPokoju
+			// 
+			this->numerPokoju->Text = L"Numer pokoju";
+			// 
+			// pietro
+			// 
+			this->pietro->Text = L"Piêtro";
 			// 
 			// Proponowanie
 			// 

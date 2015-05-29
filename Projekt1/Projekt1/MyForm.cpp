@@ -8,6 +8,8 @@
 #include "NowyPokoj.h"
 #include "UsunPokoj.h"
 
+#include "BazaDanych.h"
+
 System::Void Projekt1::MyForm::MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 
@@ -20,31 +22,31 @@ System::Void Projekt1::MyForm::zaproponujPokójToolStripMenuItem1_Click(System::O
 System::Void Projekt1::MyForm::zaproponujPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	Proponowanie proponowanie;
 	// showdialog - okno modalne
-	proponowanie.ShowDialog();
+	proponowanie.ShowDialog(this);
 }
 
 System::Void Projekt1::MyForm::nowaRezerwacjaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	NowaRezerwacja nowaRezerwacja;
 
-	nowaRezerwacja.ShowDialog();
+	nowaRezerwacja.ShowDialog(this);
 }
 
 System::Void Projekt1::MyForm::anulujRezerwacjêToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	AnulujRezerwacje anulujRezerwacje;
 
-	anulujRezerwacje.ShowDialog();
+	anulujRezerwacje.ShowDialog(this);
 }
 
 System::Void Projekt1::MyForm::dodajPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	NowyPokoj nowyPokoj;
 
-	nowyPokoj.ShowDialog();
+	nowyPokoj.ShowDialog(this);
 }
 
 System::Void Projekt1::MyForm::usuñPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	UsunPokoj usunPokoj;
 
-	usunPokoj.ShowDialog();
+	usunPokoj.ShowDialog(this);
 }
 
 
@@ -67,6 +69,28 @@ System::Void Projekt1::MyForm::wolneToolStripMenuItem_Click(System::Object^  sen
 System::Void Projekt1::MyForm::listaPokoi_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
 	NowaRezerwacja nowaRezerwacja;
 	// podac parametr jakim jest wybrany pokój
-	nowaRezerwacja.Show();
+	nowaRezerwacja.ShowDialog(this);
 
+}
+
+#include <sstream>
+#include "Klasy.h"
+System::Void Projekt1::MyForm::odswiezPokoje()
+{
+	Pokoj kryterium;
+	
+	auto pokoje = BazaDanych::Pokoje(kryterium);
+
+	this->listaPokoi->Items->Clear();
+	for (auto & pokoj : pokoje)
+	{
+		std::stringstream ss;
+		ss << "Pokoj nr " << pokoj.numer;
+
+		String ^ numer = gcnew String(ss.str().c_str());
+		auto item = gcnew ListViewItem(numer);
+		item->SubItems->Add(pokoj.zarezerwowany ? "Zarezerwowany" : "Wolny");
+
+		this->listaPokoi->Items->Add(item);
+	}
 }
