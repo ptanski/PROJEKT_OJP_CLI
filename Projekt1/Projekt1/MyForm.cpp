@@ -1,7 +1,12 @@
 #include "MyForm.h"
+
 #include "Proponowanie.h"
+
 #include "NowaRezerwacja.h"
 #include "AnulujRezerwacje.h"
+
+#include "NowyPokoj.h"
+#include "UsunPokoj.h"
 
 System::Void Projekt1::MyForm::MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
@@ -31,11 +36,15 @@ System::Void Projekt1::MyForm::anulujRezerwacjêToolStripMenuItem_Click(System::O
 }
 
 System::Void Projekt1::MyForm::dodajPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("okno dodawania pokoi");
+	NowyPokoj nowyPokoj;
+
+	nowyPokoj.ShowDialog();
 }
 
 System::Void Projekt1::MyForm::usuñPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("okno usuwania pokoi");
+	UsunPokoj usunPokoj;
+
+	usunPokoj.ShowDialog();
 }
 
 
