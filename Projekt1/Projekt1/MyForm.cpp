@@ -1,5 +1,7 @@
 #include "MyForm.h"
 #include "Proponowanie.h"
+#include "NowaRezerwacja.h"
+#include "AnulujRezerwacje.h"
 
 System::Void Projekt1::MyForm::MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
@@ -17,11 +19,15 @@ System::Void Projekt1::MyForm::zaproponujPokójToolStripMenuItem_Click(System::Ob
 }
 
 System::Void Projekt1::MyForm::nowaRezerwacjaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("okno nowej rezerwacji");
+	NowaRezerwacja nowaRezerwacja;
+
+	nowaRezerwacja.ShowDialog();
 }
 
 System::Void Projekt1::MyForm::anulujRezerwacjêToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("okno anulowania rezerwacji");
+	AnulujRezerwacje anulujRezerwacje;
+
+	anulujRezerwacje.ShowDialog();
 }
 
 System::Void Projekt1::MyForm::dodajPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -47,4 +53,11 @@ System::Void Projekt1::MyForm::piêtraToolStripMenuItem_Click(System::Object^  se
 
 System::Void Projekt1::MyForm::wolneToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	MessageBox::Show("Zmiana sposobu grupowania na zajetosc");
+}
+
+System::Void Projekt1::MyForm::listaPokoi_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
+	NowaRezerwacja nowaRezerwacja;
+	// podac parametr jakim jest wybrany pokój
+	nowaRezerwacja.Show();
+
 }

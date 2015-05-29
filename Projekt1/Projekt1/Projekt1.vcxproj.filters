@@ -24,12 +24,24 @@
     <ClCompile Include="Proponowanie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NowaRezerwacja.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnulujRezerwacje.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Proponowanie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NowaRezerwacja.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnulujRezerwacje.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
