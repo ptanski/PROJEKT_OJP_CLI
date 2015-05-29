@@ -1,4 +1,5 @@
 #include "MyForm.h"
+#include "Proponowanie.h"
 
 System::Void Projekt1::MyForm::MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
@@ -10,7 +11,9 @@ System::Void Projekt1::MyForm::zaproponujPokójToolStripMenuItem1_Click(System::O
 	this->zaproponujPokójToolStripMenuItem_Click(sender, e);
 }
 System::Void Projekt1::MyForm::zaproponujPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("okno proponowania pokoju");
+	Proponowanie proponowanie;
+	// showdialog - okno modalne
+	proponowanie.ShowDialog();
 }
 
 System::Void Projekt1::MyForm::nowaRezerwacjaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
