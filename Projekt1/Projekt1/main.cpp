@@ -1,11 +1,16 @@
 #include <Windows.h>
 #include <iostream>
+#include <string>
 #include "MyForm.h"
 
 int main()
 {
-	std::cout << "wyjscie do konsoli" << std::endl;
+	// enable visual styles
+	System::Windows::Forms::Application::EnableVisualStyles();
+
+	// create instance of form1 (main window) and run it
 	Projekt1::MyForm form1;
 	System::Windows::Forms::Application::Run(%form1);
-	return -1;
+
+	return 0;
 }
