@@ -16,15 +16,14 @@ namespace Projekt1
 	const char * kolumnyRezerwacje[][2] = {
 		KOL_DEF("id", "INTEGER PRIMARY KEY"),
 		KOL_DEF("pokoj", "INTEGER"),
-		KOL_DEF("dorosli", "INTEGER"),
-		KOL_DEF("dzieci", "INTEGER"),
-		KOL_DEF("palacy", "INTEGER"),
 		KOL_DEF("imie", "TEXT"),
 		KOL_DEF("nazwisko", "TEXT"),
 		KOL_DEF("telefon", "TEXT"),
 		KOL_DEF("email", "TEXT"),
 		KOL_DEF("adres", "TEXT"),
 		KOL_DEF("zyczenie", "TEXT"),
+		KOL_DEF("poczatek", "INTEGER"),
+		KOL_DEF("koniec", "INTEGER"),
 		KOL_DEF(NULL, NULL)
 	};
 	const char * kolumnyPokoje[][2] = {
@@ -137,15 +136,30 @@ namespace Projekt1
 	}
 
 
-	int BazaDanych::NowaRezerwacja(int numerPokoju, int dorosli, int dzieci, bool palacy,
-		int poczatek, int koniec,
-		std::string imie, std::string nazwisko, std::string telefon, std::string email, std::string adres,
-		std::string specjalneZyczenie) {
+	int BazaDanych::NowaRezerwacja(int numerPokoju, int poczatek, int koniec,
+		std::wstring imie, std::wstring nazwisko, std::wstring telefon, std::wstring email, std::wstring adres,
+		std::wstring specjalneZyczenie) {
 		BazaDanych & bd = BDInit();
 		dbHandle & handle = bd.handle<dbHandle>();
-		int id = -1;
 
-		return id;
+		sqlite3_stmt * stmt;
+		sqlite3_prepare(handle, "INSERT INTO rezerwacje (pokoj, imie, nazwisko, telefon, email, adres, zyczenie, poczatek, koniec)"
+								"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			-1, &stmt, NULL);
+		sqlite3_bind_int(stmt, 1, numerPokoju);
+		sqlite3_bind_text16(stmt, 2, imie.c_str(), -1, SQLITE_STATIC);
+		sqlite3_bind_text16(stmt, 3, nazwisko.c_str(), -1, SQLITE_STATIC);
+		sqlite3_bind_text16(stmt, 4, telefon.c_str(), -1, SQLITE_STATIC);
+		sqlite3_bind_text16(stmt, 5, email.c_str(), -1, SQLITE_STATIC);
+		sqlite3_bind_text16(stmt, 6, adres.c_str(), -1, SQLITE_STATIC);
+		sqlite3_bind_text16(stmt, 7, specjalneZyczenie.c_str(), -1, SQLITE_STATIC);
+		sqlite3_bind_int(stmt, 8, poczatek);
+		sqlite3_bind_int(stmt, 9, koniec);
+
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
+
+		return sqlite3_last_insert_rowid(handle);
 	}
 
 
@@ -153,6 +167,12 @@ namespace Projekt1
 		BazaDanych & bd = BDInit();
 		dbHandle & handle = bd.handle<dbHandle>();
 		bool result = false;
+
+		sqlite3_stmt * stmt;
+		sqlite3_prepare(handle, "DELETE FROM rezerwacje WHERE id = ?", -1, &stmt, NULL);
+		sqlite3_bind_int(stmt, 1, idRezerwacji);
+		sqlite3_step(stmt);
+		sqlite3_finalize(stmt);
 
 		return result;
 	}
@@ -178,7 +198,7 @@ namespace Projekt1
 			// sprawdzenie zajetosci pokoju
 			{
 				sqlite3_stmt * stmt;
-				sqlite3_prepare(handle, "SELECT COUNT(*) FROM rezerwacje WHERE numer = ? AND poczatek <= ? AND koniec > ?", -1, &stmt, NULL);
+				sqlite3_prepare(handle, "SELECT COUNT(*) FROM rezerwacje WHERE pokoj = ? AND poczatek <= ? AND koniec > ?", -1, &stmt, NULL);
 				sqlite3_bind_int(stmt, 1, numer);
 				sqlite3_bind_int(stmt, 2, kryteria.poczatekRezerwacji);
 				sqlite3_bind_int(stmt, 3, kryteria.koniecRezerwacji);
@@ -194,7 +214,8 @@ namespace Projekt1
 			if (kryteria.dorosli <= dorosli &&
 				kryteria.dzieci <= dzieci &&
 				(kryteria.palacy && palacy) == kryteria.palacy &&
-				(kryteria.zarezerwowany || zarezerwowany) == kryteria.zarezerwowany )
+				(kryteria.zarezerwowany || zarezerwowany) == kryteria.zarezerwowany &&
+				((kryteria.numer > -1) ? (kryteria.numer == numer ) : true) )
 			{
 
 				result.emplace_back();
@@ -217,6 +238,25 @@ namespace Projekt1
 		BazaDanych & bd = BDInit();
 		dbHandle & handle = bd.handle<dbHandle>();
 		std::vector<Rezerwacja> result;
+
+		sqlite3_stmt * stmt;
+		// TODO : mo¿na rozwin¹æ o pobieranie dodatkowych pól
+		// w tym momencie niepotrzebne w aplikacji
+		sqlite3_prepare(handle, "SELECT id, pokoj, poczatek, koniec FROM rezerwacje", -1, &stmt, NULL);
+
+		while (sqlite3_step(stmt) == SQLITE_ROW)
+		{
+			int id = sqlite3_column_int(stmt, 0);
+			int pokoj = sqlite3_column_int(stmt, 1);
+			int poczatek = sqlite3_column_int(stmt, 2);
+			int koniec = sqlite3_column_int(stmt, 3);
+
+			result.emplace_back();
+			result.back().id = id;
+			result.back().numerPokoju = pokoj;
+			result.back().poczatek = poczatek;
+			result.back().koniec = koniec;
+		}
 
 		return result;
 	}

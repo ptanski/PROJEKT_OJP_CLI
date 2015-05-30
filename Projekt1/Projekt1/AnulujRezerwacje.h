@@ -21,6 +21,7 @@ namespace Projekt1 {
 			//
 			//TODO: Add the constructor code here
 			//
+			zaladujRezerwacje();
 		}
 
 	protected:
@@ -55,10 +56,10 @@ namespace Projekt1 {
 		void InitializeComponent(void)
 		{
 			this->listaRezerwacji = (gcnew System::Windows::Forms::ListView());
-			this->anulujbtn = (gcnew System::Windows::Forms::Button());
 			this->pokoj = (gcnew System::Windows::Forms::ColumnHeader());
 			this->poczatek = (gcnew System::Windows::Forms::ColumnHeader());
 			this->koniec = (gcnew System::Windows::Forms::ColumnHeader());
+			this->anulujbtn = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// listaRezerwacji
@@ -73,16 +74,6 @@ namespace Projekt1 {
 			this->listaRezerwacji->TabIndex = 0;
 			this->listaRezerwacji->UseCompatibleStateImageBehavior = false;
 			this->listaRezerwacji->View = System::Windows::Forms::View::Details;
-			// 
-			// anulujbtn
-			// 
-			this->anulujbtn->Location = System::Drawing::Point(13, 325);
-			this->anulujbtn->Name = L"anulujbtn";
-			this->anulujbtn->Size = System::Drawing::Size(479, 32);
-			this->anulujbtn->TabIndex = 1;
-			this->anulujbtn->Text = L"Anuluj wybrane rezerwacje";
-			this->anulujbtn->UseVisualStyleBackColor = true;
-			this->anulujbtn->Click += gcnew System::EventHandler(this, &AnulujRezerwacje::anulujbtn_Click);
 			// 
 			// pokoj
 			// 
@@ -99,6 +90,16 @@ namespace Projekt1 {
 			this->koniec->Text = L"Koniec rez.";
 			this->koniec->Width = 192;
 			// 
+			// anulujbtn
+			// 
+			this->anulujbtn->Location = System::Drawing::Point(13, 325);
+			this->anulujbtn->Name = L"anulujbtn";
+			this->anulujbtn->Size = System::Drawing::Size(479, 32);
+			this->anulujbtn->TabIndex = 1;
+			this->anulujbtn->Text = L"Anuluj wybrane rezerwacje";
+			this->anulujbtn->UseVisualStyleBackColor = true;
+			this->anulujbtn->Click += gcnew System::EventHandler(this, &AnulujRezerwacje::anulujbtn_Click);
+			// 
 			// AnulujRezerwacje
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -114,5 +115,6 @@ namespace Projekt1 {
 		}
 #pragma endregion
 	private: System::Void anulujbtn_Click(System::Object^  sender, System::EventArgs^  e);
-	};
+	private: System::Void zaladujRezerwacje();
+};
 }

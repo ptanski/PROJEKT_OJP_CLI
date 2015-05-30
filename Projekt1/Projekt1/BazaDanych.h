@@ -28,10 +28,9 @@ namespace Projekt1
 		static void UsunPokoj(int numerPokoju);
 
 		// dodaj nowa rezerwacje, zwroc ID rezerwacji
-		static int NowaRezerwacja(int numerPokoju, int dorosli, int dzieci, bool palacy,
-			int poczatek, int koniec,
-			std::string imie, std::string nazwisko, std::string telefon, std::string email, std::string adres,
-			std::string specjalneZyczenie);
+		static int NowaRezerwacja(int numerPokoju, int poczatek, int koniec,
+			std::wstring imie, std::wstring nazwisko, std::wstring telefon, std::wstring email, std::wstring adres,
+			std::wstring specjalneZyczenie);
 
 		// anuluj rezerwacje o podanym ID
 		static bool AnulujRezerwacje(int idRezerwacji);

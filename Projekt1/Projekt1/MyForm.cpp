@@ -78,7 +78,9 @@ System::Void Projekt1::MyForm::listaPokoi_DoubleClick(System::Object^  sender, S
 System::Void Projekt1::MyForm::odswiezPokoje()
 {
 	Pokoj kryterium;
-	
+	kryterium.poczatekRezerwacji = System::DateTime::Today.Year * 1000 + System::DateTime::Today.DayOfYear;
+	kryterium.koniecRezerwacji = System::DateTime::Today.Year * 1000 + System::DateTime::Today.DayOfYear;
+
 	auto pokoje = BazaDanych::Pokoje(kryterium);
 
 	this->listaPokoi->Items->Clear();
@@ -87,7 +89,7 @@ System::Void Projekt1::MyForm::odswiezPokoje()
 		std::stringstream ss;
 		ss << "Pokoj nr " << pokoj.numer;
 
-		String ^ numer = gcnew String(ss.str().c_str());
+		auto numer = gcnew String(ss.str().c_str());
 		auto item = gcnew ListViewItem(numer);
 		item->SubItems->Add(pokoj.zarezerwowany ? "Zarezerwowany" : "Wolny");
 

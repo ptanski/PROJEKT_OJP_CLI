@@ -21,6 +21,7 @@ namespace Projekt1 {
 			//
 			//TODO: Add the constructor code here
 			//
+			pobierzPokoje();
 		}
 
 	protected:
@@ -39,12 +40,13 @@ namespace Projekt1 {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::MonthCalendar^  koniec;
 	private: System::Windows::Forms::MonthCalendar^  poczatek;
-	private: System::Windows::Forms::Label^  label3;
-	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::NumericUpDown^  iloscDzieci;
-	private: System::Windows::Forms::NumericUpDown^  iloscDoroslych;
+
+
+
+
 	private: System::Windows::Forms::Label^  label5;
-	private: System::Windows::Forms::ComboBox^  comboBox1;
+	private: System::Windows::Forms::ComboBox^  numerPokoju;
+
 	private: System::Windows::Forms::TextBox^  imie;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label7;
@@ -81,12 +83,8 @@ namespace Projekt1 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->koniec = (gcnew System::Windows::Forms::MonthCalendar());
 			this->poczatek = (gcnew System::Windows::Forms::MonthCalendar());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->iloscDzieci = (gcnew System::Windows::Forms::NumericUpDown());
-			this->iloscDoroslych = (gcnew System::Windows::Forms::NumericUpDown());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->numerPokoju = (gcnew System::Windows::Forms::ComboBox());
 			this->imie = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
@@ -101,14 +99,12 @@ namespace Projekt1 {
 			this->zyczenie = (gcnew System::Windows::Forms::TextBox());
 			this->anuluj = (gcnew System::Windows::Forms::Button());
 			this->zarezerwuj = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->iloscDzieci))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->iloscDoroslych))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(384, 10);
+			this->label4->Location = System::Drawing::Point(290, 10);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(51, 17);
 			this->label4->TabIndex = 18;
@@ -117,7 +113,7 @@ namespace Projekt1 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(185, 11);
+			this->label1->Location = System::Drawing::Point(91, 11);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(66, 17);
 			this->label1->TabIndex = 17;
@@ -125,48 +121,16 @@ namespace Projekt1 {
 			// 
 			// koniec
 			// 
-			this->koniec->Location = System::Drawing::Point(384, 41);
+			this->koniec->Location = System::Drawing::Point(290, 41);
 			this->koniec->Name = L"koniec";
 			this->koniec->TabIndex = 16;
 			// 
 			// poczatek
 			// 
-			this->poczatek->Location = System::Drawing::Point(185, 40);
+			this->poczatek->Location = System::Drawing::Point(91, 40);
 			this->poczatek->MaxSelectionCount = 1;
 			this->poczatek->Name = L"poczatek";
 			this->poczatek->TabIndex = 15;
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 144);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(46, 17);
-			this->label3->TabIndex = 14;
-			this->label3->Text = L"Dzieci";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 117);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(52, 17);
-			this->label2->TabIndex = 13;
-			this->label2->Text = L"Doroœli";
-			// 
-			// iloscDzieci
-			// 
-			this->iloscDzieci->Location = System::Drawing::Point(65, 146);
-			this->iloscDzieci->Name = L"iloscDzieci";
-			this->iloscDzieci->Size = System::Drawing::Size(98, 22);
-			this->iloscDzieci->TabIndex = 12;
-			// 
-			// iloscDoroslych
-			// 
-			this->iloscDoroslych->Location = System::Drawing::Point(65, 118);
-			this->iloscDoroslych->Name = L"iloscDoroslych";
-			this->iloscDoroslych->Size = System::Drawing::Size(98, 22);
-			this->iloscDoroslych->TabIndex = 11;
 			// 
 			// label5
 			// 
@@ -177,13 +141,14 @@ namespace Projekt1 {
 			this->label5->TabIndex = 19;
 			this->label5->Text = L"Wybrany pokój";
 			// 
-			// comboBox1
+			// numerPokoju
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(122, 261);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 24);
-			this->comboBox1->TabIndex = 20;
+			this->numerPokoju->FormattingEnabled = true;
+			this->numerPokoju->Location = System::Drawing::Point(122, 261);
+			this->numerPokoju->Name = L"numerPokoju";
+			this->numerPokoju->Size = System::Drawing::Size(121, 24);
+			this->numerPokoju->TabIndex = 20;
+			this->numerPokoju->SelectedIndexChanged += gcnew System::EventHandler(this, &NowaRezerwacja::numerPokoju_SelectedIndexChanged);
 			// 
 			// imie
 			// 
@@ -320,21 +285,15 @@ namespace Projekt1 {
 			this->Controls->Add(this->nazwisko);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->imie);
-			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->numerPokoju);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->koniec);
 			this->Controls->Add(this->poczatek);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->iloscDzieci);
-			this->Controls->Add(this->iloscDoroslych);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"NowaRezerwacja";
 			this->Text = L"Nowa rezerwacja";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->iloscDzieci))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->iloscDoroslych))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -342,5 +301,8 @@ namespace Projekt1 {
 #pragma endregion
 private: System::Void anuluj_Click(System::Object^  sender, System::EventArgs^  e);
 private: System::Void zarezerwuj_Click(System::Object^  sender, System::EventArgs^  e);
+private: System::Void numerPokoju_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e);
+private: bool dozwolonaRezerwacja();
+private: System::Void pobierzPokoje();
 };
 }
