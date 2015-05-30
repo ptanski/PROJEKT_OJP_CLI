@@ -56,8 +56,8 @@ namespace Projekt1 {
 		{
 			this->listaPokoi = (gcnew System::Windows::Forms::ListView());
 			this->nrPokoju = (gcnew System::Windows::Forms::ColumnHeader());
-			this->usun = (gcnew System::Windows::Forms::Button());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->usun = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// listaPokoi
@@ -92,7 +92,7 @@ namespace Projekt1 {
 			this->Controls->Add(this->usun);
 			this->Controls->Add(this->listaPokoi);
 			this->Name = L"UsunPokoj";
-			this->Text = L"UsunPokoj";
+			this->Text = L"Usuñ pokoje";
 			this->ResumeLayout(false);
 
 		}

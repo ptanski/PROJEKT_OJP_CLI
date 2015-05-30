@@ -109,7 +109,7 @@ namespace Projekt1 {
 			this->Controls->Add(this->listaRezerwacji);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"AnulujRezerwacje";
-			this->Text = L"AnulujRezerwacje";
+			this->Text = L"Anuluj rezerwacje";
 			this->ResumeLayout(false);
 
 		}

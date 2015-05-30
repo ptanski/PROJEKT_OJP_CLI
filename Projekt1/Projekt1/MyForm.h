@@ -63,10 +63,10 @@ namespace Projekt1 {
 	private: System::Windows::Forms::ColumnHeader^  zarezerwowany;
 	private: System::Windows::Forms::ColumnHeader^  najblizszaRezerwacja;
 	private: System::Windows::Forms::ToolStripMenuItem^  zaproponujPokójToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripDropDownButton^  toolStripDropDownButton1;
-	private: System::Windows::Forms::ToolStripMenuItem^  wolneToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  piêtraToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  iloœæMiejscToolStripMenuItem;
+
+
+
+
 
 	protected:
 
@@ -84,7 +84,6 @@ namespace Projekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->pokojeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->zaproponujPokójToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -98,16 +97,11 @@ namespace Projekt1 {
 			this->pomocToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->oProgramieToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
-			this->toolStripDropDownButton1 = (gcnew System::Windows::Forms::ToolStripDropDownButton());
-			this->wolneToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->piêtraToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->iloœæMiejscToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listaPokoi = (gcnew System::Windows::Forms::ListView());
 			this->nrPokoju = (gcnew System::Windows::Forms::ColumnHeader());
 			this->zarezerwowany = (gcnew System::Windows::Forms::ColumnHeader());
 			this->najblizszaRezerwacja = (gcnew System::Windows::Forms::ColumnHeader());
 			this->menuStrip1->SuspendLayout();
-			this->statusStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -212,46 +206,11 @@ namespace Projekt1 {
 			// statusStrip1
 			// 
 			this->statusStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->toolStripDropDownButton1 });
-			this->statusStrip1->Location = System::Drawing::Point(0, 507);
+			this->statusStrip1->Location = System::Drawing::Point(0, 509);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(921, 26);
+			this->statusStrip1->Size = System::Drawing::Size(921, 24);
 			this->statusStrip1->TabIndex = 2;
 			this->statusStrip1->Text = L"statusStrip1";
-			// 
-			// toolStripDropDownButton1
-			// 
-			this->toolStripDropDownButton1->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->toolStripDropDownButton1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->wolneToolStripMenuItem,
-					this->piêtraToolStripMenuItem, this->iloœæMiejscToolStripMenuItem
-			});
-			this->toolStripDropDownButton1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripDropDownButton1.Image")));
-			this->toolStripDropDownButton1->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->toolStripDropDownButton1->Name = L"toolStripDropDownButton1";
-			this->toolStripDropDownButton1->Size = System::Drawing::Size(103, 24);
-			this->toolStripDropDownButton1->Text = L"Grupowanie";
-			// 
-			// wolneToolStripMenuItem
-			// 
-			this->wolneToolStripMenuItem->Name = L"wolneToolStripMenuItem";
-			this->wolneToolStripMenuItem->Size = System::Drawing::Size(154, 24);
-			this->wolneToolStripMenuItem->Text = L"Wolne";
-			this->wolneToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::wolneToolStripMenuItem_Click);
-			// 
-			// piêtraToolStripMenuItem
-			// 
-			this->piêtraToolStripMenuItem->Name = L"piêtraToolStripMenuItem";
-			this->piêtraToolStripMenuItem->Size = System::Drawing::Size(154, 24);
-			this->piêtraToolStripMenuItem->Text = L"Piêtra";
-			this->piêtraToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::piêtraToolStripMenuItem_Click);
-			// 
-			// iloœæMiejscToolStripMenuItem
-			// 
-			this->iloœæMiejscToolStripMenuItem->Name = L"iloœæMiejscToolStripMenuItem";
-			this->iloœæMiejscToolStripMenuItem->Size = System::Drawing::Size(154, 24);
-			this->iloœæMiejscToolStripMenuItem->Text = L"Iloœæ miejsc";
-			this->iloœæMiejscToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::iloœæMiejscToolStripMenuItem_Click);
 			// 
 			// listaPokoi
 			// 
@@ -297,8 +256,6 @@ namespace Projekt1 {
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
-			this->statusStrip1->ResumeLayout(false);
-			this->statusStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -315,9 +272,6 @@ namespace Projekt1 {
 	private: System::Void dodajPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void usuñPokójToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void zaproponujPokójToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void iloœæMiejscToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void piêtraToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void wolneToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e);
 private: System::Void listaPokoi_DoubleClick(System::Object^  sender, System::EventArgs^  e);
 
 	public: System::Void odswiezPokoje();

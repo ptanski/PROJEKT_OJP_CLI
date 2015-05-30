@@ -54,18 +54,6 @@ System::Void Projekt1::MyForm::oProgramieToolStripMenuItem_Click(System::Object^
 	MessageBox::Show("Autor: P. Tañski", "O programie", MessageBoxButtons::OK);
 }
 
-System::Void Projekt1::MyForm::iloœæMiejscToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("Zmiana sposobu grupowania na ilosc miejsc");
-}
-
-System::Void Projekt1::MyForm::piêtraToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("Zmiana sposobu grupowania na pietra");
-}
-
-System::Void Projekt1::MyForm::wolneToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("Zmiana sposobu grupowania na zajetosc");
-}
-
 System::Void Projekt1::MyForm::listaPokoi_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
 	NowaRezerwacja nowaRezerwacja;
 	// podac parametr jakim jest wybrany pokój
@@ -92,6 +80,8 @@ System::Void Projekt1::MyForm::odswiezPokoje()
 		auto numer = gcnew String(ss.str().c_str());
 		auto item = gcnew ListViewItem(numer);
 		item->SubItems->Add(pokoj.zarezerwowany ? "Zarezerwowany" : "Wolny");
+		item->UseItemStyleForSubItems = false;
+		item->SubItems[item->SubItems->Count-1]->ForeColor = pokoj.zarezerwowany ? System::Drawing::Color::Red : System::Drawing::Color::Green;
 
 		this->listaPokoi->Items->Add(item);
 	}

@@ -82,7 +82,7 @@ namespace Projekt1 {
 			this->pokoj->Name = L"pokoj";
 			this->pokoj->Size = System::Drawing::Size(227, 34);
 			this->pokoj->TabIndex = 0;
-			this->pokoj->Text = L"Dodaj pokoj";
+			this->pokoj->Text = L"Dodaj pokój";
 			this->pokoj->UseVisualStyleBackColor = true;
 			this->pokoj->Click += gcnew System::EventHandler(this, &NowyPokoj::pokoj_Click);
 			// 
@@ -158,7 +158,7 @@ namespace Projekt1 {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pokoj);
 			this->Name = L"NowyPokoj";
-			this->Text = L"Nowy Pokoj";
+			this->Text = L"Nowy pokój";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dorosli))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dzieci))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pietro))->EndInit();

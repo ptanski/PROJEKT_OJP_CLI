@@ -37,6 +37,7 @@ System::Void Projekt1::Proponowanie::odswiezListePokoi()
 	kryterium.palacy = this->dlaPalacych->Checked;
 	kryterium.poczatekRezerwacji = this->poczatek->SelectionStart.Year * 1000 + this->poczatek->SelectionStart.DayOfYear;
 	kryterium.koniecRezerwacji = this->koniec->SelectionStart.Year * 1000 + this->koniec->SelectionStart.DayOfYear;
+	kryterium.zarezerwowany = false;
 
 	auto pokoje = BazaDanych::Pokoje(kryterium);
 
